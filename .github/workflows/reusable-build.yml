@@ -165,8 +165,6 @@ jobs:
           - zfs
         exclude:
           # extra
-          - kernel_flavor: main
-            cfile_suffix: extra
           - kernel_flavor: asus
             cfile_suffix: extra
           - kernel_flavor: surface
