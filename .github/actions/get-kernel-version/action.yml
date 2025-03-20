@@ -123,11 +123,7 @@ runs:
 
             ;;
           "main")
-            base_image_name="base"
-            if [[ ${{ inputs.fedora_version }} > 40 ]]; then
-              base_image_name+="-atomic"
-            fi
-            linux=$(skopeo inspect docker://quay.io/fedora-ostree-desktops/$base_image_name:${{ inputs.fedora_version }} | jq -r '.Labels["ostree.linux"]' )
+            coreos_kernel stable
             ;;
           "coreos-stable")
             coreos_kernel stable
@@ -158,4 +154,3 @@ runs:
           echo "build_tag=${build_tag}" >> $GITHUB_OUTPUT
           echo "major_minor_patch=${kernel_major_minor_patch}" >> $GITHUB_OUTPUT
           echo "release=${linux}" >> $GITHUB_OUTPUT
-
